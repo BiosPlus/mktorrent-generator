@@ -31,13 +31,18 @@
         <div class="row">
             <div class="col text-center">
                 <h1>mkTorrent Generator</h1>
+                <br>
             </div>
         </div>
 
         <row>
             <div class="card">
-                <div class="card-body" id="output">
-                    Fill in the fields below
+                <div class="card-body " id="output">
+                    mktorrent -v -l 19 \<br>
+-a udp://tracker.coppersurfer.tk:6969/announce \<br>
+-a udp://tracker.opentrackr.org:1337/announce \<br>
+-a udp://tracker.leechers-paradise.org:6969/announce \<br>
+"" directory_or_filename_here
                 </div>
             </div>
         </row>
@@ -52,7 +57,7 @@
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Size?</span>
+                <span class="input-group-text">Directory/File Size? (at most)</span>
             </div>
             <select class="custom-select" id="inputChunkSize">
                 <option value="19">1GB</option>
@@ -61,7 +66,8 @@
                 <option value="22">8GB</option>
                 <option value="23">16GB</option>
                 <option value="24">512GB</option>
-                <option value="25">Higher (Experimental, may not work)</option>
+                <option value="25">1TB+ (Not supported by older clients)</option>
+                <option value="25">No idea</option>
             </select>
         </div>
 
@@ -71,11 +77,20 @@
             </div>
             <select class="custom-select" id="inputPrivate">
                 <option
-                    value="-a udp://tracker.coppersurfer.tk:6969/announce -a udp://tracker.opentrackr.org:1337/announce -a udp://tracker.leechers-paradise.org:6969/announce ">
+                    value="-a udp://tracker.coppersurfer.tk:6969/announce \<br>-a udp://tracker.opentrackr.org:1337/announce \<br>-a udp://tracker.leechers-paradise.org:6969/announce \<br>">
                     No (Will input several reputable trackers)</option>
-                <option value="-p ">Yes (DHT + Peer Exchange disabled)</option>
+                <option value="--private \<br>">Yes (DHT + Peer Exchange disabled)</option>
             </select>
         </div>
+
+        <!--
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Comment?</span>
+            </div>
+            <input type="text" class="form-control" id="inputComment" aria-label="Comment">
+        </div>
+    -->
 
     </div>
 
@@ -86,13 +101,13 @@
         document.getElementById("inputChunkSize").onchange = function () { total() }
         document.getElementById("inputPrivate").onchange = function () { total() }
 
-
         function total() {
             var varTitle = document.getElementById("inputTitle").value;
             var varSize = document.getElementById("inputChunkSize").value;
             var varPrivate = document.getElementById("inputPrivate").value;
+
             console.log("change detected");
-            document.getElementById("output").innerHTML = "mktorrent -v " + varPrivate + `-l ` + varSize + ` "` + varTitle + `"`;
+            document.getElementById("output").innerHTML = "mktorrent -v " + `-l ` + varSize + ` \\<br>` + varPrivate + `"` + varTitle + `" directory_or_filename_here`;
         }
     </script>
 
