@@ -65,19 +65,30 @@
               </select>
         </div>
 
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Private torrent?</span>
+            </div>
+            <select class="custom-select" id="inputPrivate">
+                <option value="">No (DHT + Peer Exchange enabled)</option>
+                <option value="-p ">Yes</option>
+              </select>
+        </div>
+
         <!-- Assembler Script -->
 
         <script>
-
             document.getElementById("inputTitle").onchange = function () { total() }
             document.getElementById("inputChunkSize").onchange = function () { total() }
+            document.getElementById("inputPrivate").onchange = function () { total() }
+
 
             function total() {
                 var varTitle = document.getElementById("inputTitle").value;
                 var varSize = document.getElementById("inputChunkSize").value;
-                /*var varTrackers = document.getElementById("inputTrackers").value;*/
+                var varPrivate = document.getElementById("inputPrivate").value;
                 console.log("change detected");
-                document.getElementById("output").innerHTML = "mktorrent -v " + `-l ` + varSize + ` "` + varTitle + `"`;
+                document.getElementById("output").innerHTML = "mktorrent -v " + varPrivate + `-l ` + varSize + ` "` + varTitle + `"`;
             }
         </script>
 
