@@ -45,14 +45,14 @@
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Title</span>
+                <span class="input-group-text">Title?</span>
             </div>
             <input type="text" class="form-control" id="inputTitle" aria-label="Title">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Size</span>
+                <span class="input-group-text">Size?</span>
             </div>
             <select class="custom-select" id="inputChunkSize">
                 <option value="19">1GB</option>
@@ -62,7 +62,7 @@
                 <option value="23">16GB</option>
                 <option value="24">512GB</option>
                 <option value="25">Higher (Experimental, may not work)</option>
-              </select>
+            </select>
         </div>
 
         <div class="input-group mb-3">
@@ -70,27 +70,31 @@
                 <span class="input-group-text">Private torrent?</span>
             </div>
             <select class="custom-select" id="inputPrivate">
-                <option value="">No (DHT + Peer Exchange enabled)</option>
-                <option value="-p ">Yes</option>
-              </select>
+                <option
+                    value="-a udp://tracker.coppersurfer.tk:6969/announce -a udp://tracker.opentrackr.org:1337/announce -a udp://tracker.leechers-paradise.org:6969/announce ">
+                    No (Will input several reputable trackers)</option>
+                <option value="-p ">Yes (DHT + Peer Exchange disabled)</option>
+            </select>
         </div>
 
-        <!-- Assembler Script -->
+    </div>
 
-        <script>
-            document.getElementById("inputTitle").onchange = function () { total() }
-            document.getElementById("inputChunkSize").onchange = function () { total() }
-            document.getElementById("inputPrivate").onchange = function () { total() }
+    <!-- Assembler Script -->
+
+    <script>
+        document.getElementById("inputTitle").onchange = function () { total() }
+        document.getElementById("inputChunkSize").onchange = function () { total() }
+        document.getElementById("inputPrivate").onchange = function () { total() }
 
 
-            function total() {
-                var varTitle = document.getElementById("inputTitle").value;
-                var varSize = document.getElementById("inputChunkSize").value;
-                var varPrivate = document.getElementById("inputPrivate").value;
-                console.log("change detected");
-                document.getElementById("output").innerHTML = "mktorrent -v " + varPrivate + `-l ` + varSize + ` "` + varTitle + `"`;
-            }
-        </script>
+        function total() {
+            var varTitle = document.getElementById("inputTitle").value;
+            var varSize = document.getElementById("inputChunkSize").value;
+            var varPrivate = document.getElementById("inputPrivate").value;
+            console.log("change detected");
+            document.getElementById("output").innerHTML = "mktorrent -v " + varPrivate + `-l ` + varSize + ` "` + varTitle + `"`;
+        }
+    </script>
 
 </body>
 
