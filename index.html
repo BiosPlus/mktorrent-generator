@@ -39,10 +39,10 @@
             <div class="card">
                 <div class="card-body " id="output">
                     mktorrent -v -l 19 \<br>
--a udp://tracker.coppersurfer.tk:6969/announce \<br>
--a udp://tracker.opentrackr.org:1337/announce \<br>
--a udp://tracker.leechers-paradise.org:6969/announce \<br>
-"" directory_or_filename_here
+                    -a udp://tracker.coppersurfer.tk:6969/announce \<br>
+                    -a udp://tracker.opentrackr.org:1337/announce \<br>
+                    -a udp://tracker.leechers-paradise.org:6969/announce \<br>
+                    "" directory_or_filename_here
                 </div>
             </div>
         </row>
@@ -110,6 +110,9 @@
             document.getElementById("output").innerHTML = "mktorrent -v " + `-l ` + varSize + ` \\<br>` + varPrivate + `"` + varTitle + `" directory_or_filename_here`;
         }
     </script>
+
+    <footer class="blockquote-footer">Shitty source code for this shit at <a
+            href="https://github.com/BiosPlus/mktorrent-generator/">BiosPlus/mktorrent-generator</a></footer>
 
 </body>
 
