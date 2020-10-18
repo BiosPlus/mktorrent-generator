@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body class="bg-dark">
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -29,7 +29,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col text-center">
+            <div class="col text-center text-white">
+                <br>
                 <h1>mkTorrent Command Generator</h1>
                 <br>
             </div>
@@ -37,7 +38,7 @@
 
         <row>
             <div class="card">
-                <div class="card-body " id="output">
+                <div class="card-body" id="output">
                     mktorrent -v -l 19 \<br>
                     -a udp://tracker.coppersurfer.tk:6969/announce \<br>
                     -a udp://tracker.opentrackr.org:1337/announce \<br>
@@ -50,14 +51,14 @@
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Title?</span>
+                <span class="input-group-text bg-primary text-white">Title?</span>
             </div>
             <input type="text" class="form-control" id="inputTitle" aria-label="Title">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Directory/File Size? (at most)</span>
+                <span class="input-group-text bg-primary text-white">Directory/File Size? (at most)</span>
             </div>
             <select class="custom-select" id="inputChunkSize">
                 <option value="19">1GB</option>
@@ -73,7 +74,7 @@
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text">Private torrent?</span>
+                <span class="input-group-text bg-primary text-white">Private torrent?</span>
             </div>
             <select class="custom-select" id="inputPrivate">
                 <option
@@ -91,7 +92,7 @@
             <input type="text" class="form-control" id="inputComment" aria-label="Comment">
         </div>
     -->
-
+    <footer class="card-footer fixed-bottom bg-light">Shitty source code for this shit at <a href="https://github.com/BiosPlus/mktorrent-generator/">BiosPlus/mktorrent-generator</a></footer>
     </div>
 
     <!-- Assembler Script -->
@@ -110,9 +111,6 @@
             document.getElementById("output").innerHTML = "mktorrent -v " + `-l ` + varSize + ` \\<br>` + varPrivate + `"` + varTitle + `" directory_or_filename_here`;
         }
     </script>
-
-    <footer class="card-footer fixed-bottom">Shitty source code for this shit at <a href="https://github.com/BiosPlus/mktorrent-generator/">BiosPlus/mktorrent-generator</a></footer>
-
 </body>
 
 </html>
